@@ -1,0 +1,14 @@
+Package: rjmb
+Type: Package
+Title: Helper Functions for a Bunch of Stuff
+Version: 0.1.0
+Author: Jannik M Buhr
+Maintainer: Jannik Buhr <jannik.m.buhr@gmail.com>
+Description: Currently this contains only a few functions that aid
+  in visualization and data processing.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    stringr
+RoxygenNote: 6.1.1
