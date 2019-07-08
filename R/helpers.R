@@ -15,6 +15,8 @@
 
 #' Convert String to Math Expression
 #'
+#' First, all whitespace is replace by the tilde symbol
+#' and then the string is converted to an expression.
 #' For the full range of possible math expressions
 #' that will be converted see \link[grDevices]{plotmath}
 #'

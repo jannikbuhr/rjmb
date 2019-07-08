@@ -1,0 +1,58 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# rjmb
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of rjmb is to provide some helper functions for
+data analysis and visualization in R.
+
+All the little things I run into end up here.
+
+## Installation
+
+<!-- You can install the released version of rjmb from [CRAN](https://CRAN.R-project.org) with: -->
+
+<!-- ``` r -->
+<!-- install.packages("rjmb") -->
+<!-- ``` -->
+
+Install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("jannikbuhr/rjmb")
+```
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(rjmb)
+library(tidyverse)
+## basic example code
+
+df <- tibble(
+  x = c("delta+1", "Delta AB", "alpha"),
+  y = rep(1, length(x))
+)
+
+df %>%
+  ggplot(aes(x, y)) +
+  geom_point() +
+  scale_x_discrete(labels = convert_to_math) +
+  theme(axis.text.x = element_text(size = 12))
+```
