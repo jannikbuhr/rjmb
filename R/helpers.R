@@ -13,7 +13,10 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
-#' Title
+#' Convert String to Math Expression
+#'
+#' For the full range of possible math expressions
+#' that will be converted see \link[grDevices]{plotmath}
 #'
 #' @param x
 #' A string
@@ -26,3 +29,4 @@ convert_to_math <- function(x) {
   x <- stringr::str_replace_all(x, "\\s", "~")
   parse(text = x)
 }
+
