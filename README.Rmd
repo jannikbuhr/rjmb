@@ -1,5 +1,8 @@
 ---
-output: github_document
+title: "rjmb: Readme and Manual"
+output:
+  github_document:
+    toc: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -12,9 +15,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# rjmb
-
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/jannikbuhr/rjmb.svg?branch=master)](https://travis-ci.org/jannikbuhr/rjmb)
 <!-- badges: end -->
 
 The goal of rjmb is to provide some helper functions for
@@ -22,7 +24,7 @@ data analysis and visualization in R.
 
 All the little things I run into end up here.
 
-## Installation
+# Installation
 
 <!-- You can install the released version of rjmb from [CRAN](https://CRAN.R-project.org) with: -->
 
@@ -36,15 +38,40 @@ Install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("jannikbuhr/rjmb")
 ```
-## Example
+# Usage
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+```{r}
 library(rjmb)
-library(tidyverse, quietly = TRUE)
-## basic example code
+library(tidyverse)
+```
 
+## Big Changes
+
+### String Addition
+
+Note, that loading this package overrides to `+`-operator to work
+with strings (i.e. character vectors) as well^[this is similar to python].
+For non-strings, the default primitive `+` is still used so this
+should not break any existing code unless it relies on addition of
+strings failing. Internally, it uses `paste`, thus numbers
+are silently converted to strings when added to strings. As the first
+type (LHS of `+`) determines method dispatch, when adding strings
+and numbers, the first argument needs to be a string
+(can be an empty string `""`).
+
+```{r string-example}
+"Hello " + "World"
+"" + 1 + " duck."
+x = 2
+"" + x + " ducks."
+```
+## Helper Functions
+
+### str_to_math()
+
+Adding expressions from strings containing whitespace to a plot.
+
+```{r example, fig.width=12, fig.height=2}
 df <- tibble(
   x = c("delta+1", "Delta AB", "alpha"),
   y = rep(1, length(x))

@@ -21,12 +21,11 @@
 #' df <- tibble(
 #'   x = c("delta+1", "Delta AB", "alpha"),
 #'   y = rep(1, length(x))
-#'   )
+#' )
 #'
 #' ggplot(df, aes(x, y)) +
 #'   geom_point() +
 #'   scale_x_discrete(labels = str_to_math())
-#'
 str_to_math <- function(char = "*") {
   stopifnot(is.character(char))
   function(x) {
@@ -34,3 +33,15 @@ str_to_math <- function(char = "*") {
     parse(text = x)
   }
 }
+
+#' @export
+`+` <- function (e1, e2) UseMethod("+")
+
+#' @export
+`+.default` <- function (e1, e2) .Primitive("+")(e1, e2)
+
+#' @export
+`+.character` <- function(e1, e2)
+  if(length(e1) == length(e2)) {
+    paste0(e1, e2)
+  } else stop('String Vectors of Different Lengths')

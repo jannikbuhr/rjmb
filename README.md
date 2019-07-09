@@ -1,7 +1,14 @@
+rjmb: Readme and Manual
+================
+
+  - [Installation](#installation)
+  - [Usage](#usage)
+      - [Big Changes](#big-changes)
+          - [String Addition](#string-addition)
+      - [Helper Functions](#helper-functions)
+          - [str\_to\_math()](#str_to_math)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# rjmb
 
 <!-- badges: start -->
 
@@ -13,7 +20,7 @@ and visualization in R.
 All the little things I run into end up
 here.
 
-## Installation
+# Installation
 
 <!-- You can install the released version of rjmb from [CRAN](https://CRAN.R-project.org) with: -->
 
@@ -30,23 +37,48 @@ Install the development version from [GitHub](https://github.com/) with:
 devtools::install_github("jannikbuhr/rjmb")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+# Usage
 
 ``` r
 library(rjmb)
-library(tidyverse, quietly = TRUE)
-#> -- Attaching packages ----------------------------------------------------------------------- tidyverse 1.2.1 --
-#> v ggplot2 3.2.0     v purrr   0.3.2
-#> v tibble  2.1.3     v dplyr   0.8.3
-#> v tidyr   0.8.3     v stringr 1.4.0
-#> v readr   1.3.1     v forcats 0.4.0
-#> -- Conflicts -------------------------------------------------------------------------- tidyverse_conflicts() --
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
-## basic example code
+#> 
+#> Attaching package: 'rjmb'
+#> The following object is masked from 'package:base':
+#> 
+#>     +
+library(tidyverse)
+```
 
+## Big Changes
+
+### String Addition
+
+Note, that loading this package overrides to `+`-operator to work with
+strings (i.e. character vectors) as well\[1\]. For non-strings, the
+default primitive `+` is still used so this should not break any
+existing code unless it relies on addition of strings failing.
+Internally, it uses `paste`, thus numbers are silently converted to
+strings when added to strings. As the first type (LHS of `+`) determines
+method dispatch, when adding strings and numbers, the first argument
+needs to be a string (can be an empty string `""`).
+
+``` r
+"Hello " + "World"
+#> [1] "Hello World"
+"" + 1 + " duck."
+#> [1] "1 duck."
+x = 2
+"" + x + " ducks."
+#> [1] "2 ducks."
+```
+
+## Helper Functions
+
+### str\_to\_math()
+
+Adding expressions from strings containing whitespace to a plot.
+
+``` r
 df <- tibble(
   x = c("delta+1", "Delta AB", "alpha"),
   y = rep(1, length(x))
@@ -55,8 +87,10 @@ df <- tibble(
 df %>%
   ggplot(aes(x, y)) +
   geom_point() +
-  scale_x_discrete(labels = convert_to_math()) +
+  scale_x_discrete(labels = str_to_math()) +
   theme(axis.text.x = element_text(size = 12))
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
+
+1.  this is similar to python

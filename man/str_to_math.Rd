@@ -25,10 +25,9 @@ that will be converted see \link[grDevices]{plotmath}
 df <- tibble(
   x = c("delta+1", "Delta AB", "alpha"),
   y = rep(1, length(x))
-  )
+)
 
 ggplot(df, aes(x, y)) +
   geom_point() +
   scale_x_discrete(labels = str_to_math())
-
 }
