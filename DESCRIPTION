@@ -7,10 +7,11 @@ Maintainer: Jannik Buhr <jannik.m.buhr@gmail.com>
 Description: Currently this contains only a few functions that aid
   in visualization and data processing.
 License: MIT + file LICENSE
-Encoding: UTF-8
 LazyData: true
+Encoding: UTF-8
 Imports: 
-    stringr
+    stringr,
+    magrittr
 RoxygenNote: 6.1.1
-Suggests: 
+Suggests:
     testthat (>= 2.1.0)

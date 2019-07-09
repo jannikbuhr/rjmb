@@ -1,34 +1,36 @@
-# Hello, world!
-#
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
-#
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Install Package:           'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
-
+# ggplot helpers ----------------------------------------------------------
 #' Convert String to Math Expression
 #'
-#' First, all whitespace is replace by the tilde symbol
+#' First, all whitespace is replace by the specified
+#' string (star by default)
 #' and then the string is converted to an expression.
 #' For the full range of possible math expressions
 #' that will be converted see \link[grDevices]{plotmath}
 #'
-#' @param x
-#' A string
+#' @param char
+#  a string for whitespace replacement
 #'
 #' @return
+#' Returns a function that turns a string into
+#' an \link[base]{expression}. This can then
+#' be used as a labeler function in ggplot2.
+#'
 #' @export
 #'
 #' @examples
-convert_to_math <- function(x) {
-  x <- stringr::str_replace_all(x, "\\s", "~")
-  parse(text = x)
+#' df <- tibble(
+#'   x = c("delta+1", "Delta AB", "alpha"),
+#'   y = rep(1, length(x))
+#'   )
+#'
+#' ggplot(df, aes(x, y)) +
+#'   geom_point() +
+#'   scale_x_discrete(labels = str_to_math())
+#'
+str_to_math <- function(char = "*") {
+  stopifnot(is.character(char))
+  function(x) {
+    x <- stringr::str_replace_all(x, "\\s", char)
+    parse(text = x)
+  }
 }
-

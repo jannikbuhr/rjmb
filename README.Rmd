@@ -42,7 +42,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(rjmb)
-library(tidyverse)
+library(tidyverse, quietly = TRUE)
 ## basic example code
 
 df <- tibble(
@@ -53,6 +53,6 @@ df <- tibble(
 df %>%
   ggplot(aes(x, y)) +
   geom_point() +
-  scale_x_discrete(labels = convert_to_math) +
+  scale_x_discrete(labels = str_to_math()) +
   theme(axis.text.x = element_text(size = 12))
 ```
