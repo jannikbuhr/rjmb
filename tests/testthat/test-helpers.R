@@ -4,13 +4,13 @@ test_that("multiplication works", {
 
 test_that("math converter works", {
   xs <- list(
-    "delta and 1 + 2",
-    "1 + 1",
+    "delta and 1+2",
+    "1+1",
     "1+1==2",
     "1+1==2",
-    "delta + 1"
+    "delta+1"
   )
-  expect_error(purrr::walk(xs, convert_to_math), NA)
+  expect_error(purrr::walk(xs, str_to_math()), NA)
 })
 
 

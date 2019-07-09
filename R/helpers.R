@@ -36,7 +36,7 @@ str_to_math <- function(char = "*") {
   }
 }
 
-#' @export
+#' @export "+"
 `+` <- function (e1, e2) UseMethod("+")
 
 #' @export
