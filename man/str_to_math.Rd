@@ -22,6 +22,7 @@ For the full range of possible math expressions
 that will be converted see \link[grDevices]{plotmath}
 }
 \examples{
+\dontrun{
 df <- tibble(
   x = c("delta+1", "Delta AB", "alpha"),
   y = rep(1, length(x))
@@ -30,4 +31,5 @@ df <- tibble(
 ggplot(df, aes(x, y)) +
   geom_point() +
   scale_x_discrete(labels = str_to_math())
+}
 }

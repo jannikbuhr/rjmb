@@ -2,7 +2,7 @@
 title: "rjmb: Readme and Manual"
 output:
   github_document:
-    toc: true
+    toc: TRUE
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/jannikbuhr/rjmb.svg?branch=master)](https://travis-ci.org/jannikbuhr/rjmb)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The goal of rjmb is to provide some helper functions for
@@ -43,6 +44,8 @@ devtools::install_github("jannikbuhr/rjmb")
 ```{r}
 library(rjmb)
 library(tidyverse)
+
+theme_set(theme_classic())
 ```
 
 ## Big Changes
@@ -71,7 +74,7 @@ x = 2
 
 Adding expressions from strings containing whitespace to a plot.
 
-```{r example, fig.width=12, fig.height=2}
+```{r example, fig.width=7, fig.height=1}
 df <- tibble(
   x = c("delta+1", "Delta AB", "alpha"),
   y = rep(1, length(x))

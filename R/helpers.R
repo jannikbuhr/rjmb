@@ -18,6 +18,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' df <- tibble(
 #'   x = c("delta+1", "Delta AB", "alpha"),
 #'   y = rep(1, length(x))
@@ -26,6 +27,7 @@
 #' ggplot(df, aes(x, y)) +
 #'   geom_point() +
 #'   scale_x_discrete(labels = str_to_math())
+#' }
 str_to_math <- function(char = "*") {
   stopifnot(is.character(char))
   function(x) {

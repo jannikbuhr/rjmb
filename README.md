@@ -12,6 +12,10 @@ rjmb: Readme and Manual
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/jannikbuhr/rjmb.svg?branch=master)](https://travis-ci.org/jannikbuhr/rjmb)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The goal of rjmb is to provide some helper functions for data analysis
