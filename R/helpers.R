@@ -8,7 +8,7 @@
 #' that will be converted see \link[grDevices]{plotmath}
 #'
 #' @param char
-#  a string for whitespace replacement
+#' string
 #'
 #' @return
 #' Returns a function that turns a string into
@@ -36,13 +36,42 @@ str_to_math <- function(char = "*") {
   }
 }
 
-#' @export "+"
+#' Make plus aweseome
+#'
+#' This just turns the plus operator into a
+#' generic function
+#'
+#' @param e1
+#' Add e1
+#' @param e2
+#' To e2
+#'
+#' @export
 `+` <- function (e1, e2) UseMethod("+")
 
-#' @export
+#' Default plus
+#'
+#' The default plus (primitve) if
+#' it does not handle strings
+#'
+#' @param e1
+#' Add e1
+#' @param e2
+#' To e2
+#'
+#' @export "+.default"
 `+.default` <- function (e1, e2) .Primitive("+")(e1, e2)
 
-#' @export
+#' String plus
+#'
+#' Special treatment of plus for strings
+#'
+#' @param e1
+#' Add e1
+#' @param e2
+#' To e2
+#'
+#' @export +.character
 `+.character` <- function(e1, e2)
   if(length(e1) == length(e2)) {
     paste0(e1, e2)

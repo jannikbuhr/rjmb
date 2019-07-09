@@ -7,7 +7,7 @@
 str_to_math(char = "*")
 }
 \arguments{
-\item{char}{}
+\item{char}{string}
 }
 \value{
 Returns a function that turns a string into
